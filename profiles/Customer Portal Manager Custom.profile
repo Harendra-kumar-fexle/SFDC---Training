@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
-        <apexClass>DreamWorld</apexClass>
+        <apexClass>HelloWorld</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>false</custom>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Dream_World__c.Dream_World_Title__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
     <layoutAssignments>
-        <layout>Dream_World__c-Dream World Layout</layout>
+        <layout>Hello_World__c-Hello World Layout</layout>
     </layoutAssignments>
     <tabVisibilities>
-        <tab>Dream_World__c</tab>
+        <tab>Hello_World__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Customer Portal Manager Custom</userLicense>
