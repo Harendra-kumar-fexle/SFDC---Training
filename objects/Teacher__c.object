@@ -152,46 +152,34 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>Student__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <fullName>College__c</fullName>
         <externalId>false</externalId>
-        <label>Student</label>
-        <referenceTo>Student__c</referenceTo>
-        <relationshipLabel>StudentSubjects</relationshipLabel>
-        <relationshipName>StudentSubjects</relationshipName>
-        <required>false</required>
+        <label>College</label>
+        <referenceTo>College__c</referenceTo>
+        <relationshipLabel>Teachers</relationshipLabel>
+        <relationshipName>Teachers</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
-    <fields>
-        <fullName>Subject__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Subject</label>
-        <referenceTo>Subject__c</referenceTo>
-        <relationshipLabel>StudentSubjects</relationshipLabel>
-        <relationshipName>StudentSubjects</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <label>StudentSubject</label>
+    <label>Teacher</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
-        <label>StudentSubject Name</label>
+        <label>Teacher Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>StudentSubjects</pluralLabel>
+    <pluralLabel>Teachers</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
