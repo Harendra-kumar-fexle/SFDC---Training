@@ -154,43 +154,57 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Student__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <fullName>Address__c</fullName>
         <externalId>false</externalId>
-        <label>Student</label>
-        <referenceTo>Student__c</referenceTo>
-        <relationshipLabel>StudentSubjects</relationshipLabel>
-        <relationshipName>StudentSubjects</relationshipName>
+        <label>Address</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>TextArea</type>
     </fields>
     <fields>
-        <fullName>Subject__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <fullName>Date_Of_Birth__c</fullName>
         <externalId>false</externalId>
-        <label>Subject</label>
-        <referenceTo>Subject__c</referenceTo>
-        <relationshipLabel>StudentSubjects</relationshipLabel>
-        <relationshipName>StudentSubjects</relationshipName>
+        <label>Date Of Birth</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Date</type>
     </fields>
-    <label>StudentSubject</label>
+    <fields>
+        <fullName>Father_s_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Father&apos;s Name</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PAN_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>PAN Number</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Pan Card</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
-        <label>StudentSubject Name</label>
+        <label>Holder Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>StudentSubjects</pluralLabel>
+    <pluralLabel>Pan Cards</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
