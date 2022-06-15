@@ -140,7 +140,7 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
-    <allowInChatterGroups>false</allowInChatterGroups>
+    <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
@@ -154,43 +154,65 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Student__c</fullName>
+        <fullName>Emp_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Emp_Address</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Emp_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Emp_Name</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mantor__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Student</label>
-        <referenceTo>Student__c</referenceTo>
-        <relationshipLabel>StudentSubjects</relationshipLabel>
-        <relationshipName>StudentSubjects</relationshipName>
+        <label>Mantor</label>
+        <referenceTo>Employee__c</referenceTo>
+        <relationshipLabel>Employees (Mantor)</relationshipLabel>
+        <relationshipName>Employees1</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Subject__c</fullName>
+        <fullName>Trainer__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Subject</label>
-        <referenceTo>Subject__c</referenceTo>
-        <relationshipLabel>StudentSubjects</relationshipLabel>
-        <relationshipName>StudentSubjects</relationshipName>
+        <label>Trainer</label>
+        <referenceTo>Employee__c</referenceTo>
+        <relationshipLabel>Employees</relationshipLabel>
+        <relationshipName>Employees</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <label>StudentSubject</label>
+    <label>Employee</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
-        <label>StudentSubject Name</label>
+        <label>Employee Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>StudentSubjects</pluralLabel>
+    <pluralLabel>Employees</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
