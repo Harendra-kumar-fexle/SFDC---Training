@@ -8,16 +8,13 @@
     *  Revision Logs   :  V1.0 - Created by - Harendra Kumar 
     *
 **/
-trigger TriggerAccount on Account (before insert, before update, after insert) {
+trigger TriggerAccount on Account (before insert, before update, after insert, before delete, after delete, after update, after undelete) {
     if(Trigger.isInsert && Trigger.isAfter){
-        AccountTriggerHandler.sendEmailNotification(Trigger.New); 
+        AccountTriggerHelper.sendEmailNotification(Trigger.New); 
     }
 
     if(Trigger.isInsert && Trigger.isBefore || Trigger.isUpdate && Trigger.isBefore){
-       AccountTriggerHandler.insertAndUpdateRecord(Trigger.New);
+        AccountTriggerHelper.insertAndUpdateRecord(Trigger.New, Trigger.oldMap);
     }
-
-    if(Trigger.isInsert && Trigger.isBefore || Trigger.isUpdate && Trigger.isBefore){
-       AccountTriggerHandler.addPrefixOnType(Trigger.New, Trigger.Old);
-    }
+    AccountTriggerHelper.eventsOfTrigger(Trigger.New, Trigger.Old);
 }
