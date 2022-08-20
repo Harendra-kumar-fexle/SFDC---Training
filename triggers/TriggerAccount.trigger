@@ -14,7 +14,12 @@ trigger TriggerAccount on Account (before insert, before update, after insert, b
     }
 
     if(Trigger.isInsert && Trigger.isBefore || Trigger.isUpdate && Trigger.isBefore){
-        AccountTriggerHelper.insertAndUpdateRecord(Trigger.New, Trigger.oldMap);
+        AccountTriggerHelper.populateAccountType(Trigger.New, Trigger.oldMap);
     }
     AccountTriggerHelper.eventsOfTrigger(Trigger.New, Trigger.Old);
+    if(Trigger.isBefore){
+    }
+    if(Trigger.isInsert || Trigger.isUpdate){
+        AccountTriggerHelper.populatePropertyStatusOnAccount(Trigger.New);
+    }
 }
