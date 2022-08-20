@@ -1,5 +1,5 @@
 /**
-    *  Description     :  This is Account trigger handler class.(The content of this class only work on Account Object).
+    *  Description     :  This is Account trigger helper class.(The content of this class only work on Account Object).
     *
     *  Created By      :  Harendra Kumar
     *
@@ -38,7 +38,9 @@ public with sharing class AccountTriggerHelper {
                 emailList.add(emailMsg);
             }
         }
-        Messaging.sendEmail(emailList);
+        if(emailList.size() > 0){
+            Messaging.sendEmail(emailList);
+        } 
     }
 
 /* 
@@ -51,31 +53,33 @@ public with sharing class AccountTriggerHelper {
 *    @revision Log   :       V1.1  - Created  -  21/07/2022  - Harendra Kumar
 *
 */
-    public static void insertAndUpdateRecord(List<Account> newAccounts, Map<Id,Account> oldAccountMap){
+    public static void populateAccountType(List<Account> newAccounts, Map<Id,Account> oldAccountMap){
 
         //Loop Over New Account Records 
         for(Account acc : newAccounts){   
                     //Insert                  //Update 				  Saving Account		FD Account
             if(oldAccountMap == null || oldAccountMap != null && (acc.Type != oldAccountMap.get(acc.Id).Type)){
                     
-            if(acc.Type == 'Saving Account' && acc.AccountNumber != null)
-                        
+            if(acc.Type == 'Saving Account' && acc.AccountNumber != null){
+                acc.AccountNumber = 'SA-' + acc.AccountNumber; 
+            }     
                 //Insert Case
-            if(oldAccountMap == null){
-                acc.AccountNumber = 'SA-' + acc.AccountNumber;    
-            }else{
-                //Update Case
-                acc.AccountNumber = acc.AccountNumber.replace('FD', 'SA');
-            }
+            // if(oldAccountMap == null){
+            //     acc.AccountNumber = 'SA-' + acc.AccountNumber;    
+            // }else{
+            //     //Update Case
+            //     acc.AccountNumber = acc.AccountNumber.replace('FD', 'SA');
+            // }
                             
-            if(acc.Type == 'FD Account' && acc.AccountNumber != null)
+            if(acc.Type == 'FD Account' && acc.AccountNumber != null){
                         
-                //Insert Case
-            if(oldAccountMap == null){
-                acc.AccountNumber = 'FD-' + acc.AccountNumber;        
-            }else{
-                //Update Case
-                acc.AccountNumber = acc.AccountNumber.replace('SA', 'FD');
+                    //Insert Case
+                if(oldAccountMap == null){
+                    acc.AccountNumber = 'FD-' + acc.AccountNumber;        
+                }else{
+                    //Update Case
+                    acc.AccountNumber = acc.AccountNumber.replace('SA', 'FD');
+                }
             }
         }
     }
@@ -125,6 +129,27 @@ public with sharing class AccountTriggerHelper {
             If(Trigger.isUnDelete) {
                 System.debug('Check UnDelete List:: Trigger.New ' + Trigger.New);
                 System.debug('Check UnDelete List:: Trigger.Old ' + Trigger.Old);
+            }
+        }
+    }
+
+    public static void populatePropertyStatusOnAccount(List<Account> accList){
+
+        Set<Id> setOfPropertyIds = new Set<Id>();
+        for (Account acc : accList) {
+            setOfPropertyIds.add(acc.Property__c);
+        }
+
+        List<Property__c> properties = [Select Id, Name, Status__c From Property__c Where Id In : setOfPropertyIds];
+        Map<Id, Property__c> mapOfProperties = new Map<Id, Property__c>();
+        mapOfProperties.putAll(properties);
+
+        for (Account acc : accList) {
+            if (acc.Status__c == null) {
+                Property__c prop = mapOfProperties.get(acc.Property__c);
+                if (prop.Status__c != null) {
+                    acc.Status__c = prop.Status__c;
+                }
             }
         }
     }
